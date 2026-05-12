@@ -1,0 +1,47 @@
+﻿@{
+    ViewData["Title"] = "Dashboard";
+}
+
+<h2 class="mb-4">Bảng điều khiển Admin</h2>
+
+<div class="row">
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-primary shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Tổng bài viết</h5>
+                <h2>@ViewBag.TotalPosts</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-success shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Tổng danh mục</h5>
+                <h2>@ViewBag.TotalCategories</h2>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 mb-3">
+        <div class="card text-white bg-warning shadow-sm">
+            <div class="card-body">
+                <h5 class="card-title">Tổng liên hệ</h5>
+                <h2>@ViewBag.TotalContacts</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card shadow-sm mt-4">
+    <div class="card-body">
+        <h5>Chức năng quản trị</h5>
+        <p>
+            Trang quản trị cho phép quản lý các bài viết giới thiệu về khu du lịch biển Ba Động.
+        </p>
+
+        <a asp-area="Admin" asp-controller="Posts" asp-action="Index" class="btn btn-primary">
+            Quản lý bài viết
+        </a>
+    </div>
+</div>
