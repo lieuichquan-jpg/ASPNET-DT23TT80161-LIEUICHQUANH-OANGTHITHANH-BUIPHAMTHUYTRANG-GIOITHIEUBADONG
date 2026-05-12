@@ -1,0 +1,58 @@
+﻿@model BaDongTourism.Models.Post
+
+@{
+    ViewData["Title"] = "Sửa bài viết";
+}
+
+<h2>Sửa bài viết</h2>
+
+<form asp-area="Admin" asp-controller="Posts" asp-action="Edit" method="post" enctype="multipart/form-data" class="card p-4 shadow-sm bg-white">
+    @Html.AntiForgeryToken()
+
+    <input type="hidden" asp-for="Id" />
+
+    <div class="mb-3">
+        <label asp-for="Title" class="form-label">Tiêu đề</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Summary" class="form-label">Tóm tắt</label>
+        <textarea asp-for="Summary" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="Summary" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Content" class="form-label">Nội dung</label>
+        <textarea asp-for="Content" class="form-control" rows="8"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="CategoryId" class="form-label">Danh mục</label>
+        <select asp-for="CategoryId" class="form-control" asp-items="ViewBag.CategoryId"></select>
+        <span asp-validation-for="CategoryId" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Ảnh hiện tại</label><br />
+        <img src="@(string.IsNullOrEmpty(Model.ImageUrl) ? "/images/badong1.jpg" : Model.ImageUrl)"
+             style="width: 180px; height: 110px; object-fit: cover;"
+             class="rounded border" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Chọn ảnh mới nếu muốn thay đổi</label>
+        <input type="file" name="imageFile" class="form-control" accept="image/*" />
+    </div>
+
+    <div>
+        <button type="submit" class="btn btn-primary">Cập nhật</button>
+        <a asp-area="Admin" asp-controller="Posts" asp-action="Index" class="btn btn-secondary">Quay lại</a>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
