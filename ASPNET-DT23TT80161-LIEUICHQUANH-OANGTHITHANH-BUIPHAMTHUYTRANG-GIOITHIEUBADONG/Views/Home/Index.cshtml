@@ -1,8 +1,71 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@model IEnumerable<BaDongTourism.Models.Post>
+
+@{
+    ViewData["Title"] = "Trang chủ";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+<section class="hero-section text-center">
+    <div class="container">
+        <h1>Khu du lịch biển Ba Động</h1>
+        <p class="lead mt-3">
+            Khám phá vẻ đẹp hoang sơ, không khí trong lành và nét văn hóa đặc trưng của vùng biển Trà Vinh.
+        </p>
+        <a asp-controller="Posts" asp-action="Index" class="btn btn-light btn-lg mt-3">
+            Xem bài viết
+        </a>
+    </div>
+</section>
+
+<section class="container my-5">
+    <div class="row align-items-center">
+        <div class="col-md-6">
+            <h2 class="section-title">Giới thiệu biển Ba Động</h2>
+            <p>
+                Biển Ba Động là một trong những điểm du lịch nổi bật của tỉnh Trà Vinh.
+                Nơi đây thu hút du khách bởi vẻ đẹp bình dị, không gian biển thoáng đãng
+                và các món hải sản đặc trưng của vùng ven biển.
+            </p>
+            <p>
+                Website được xây dựng nhằm giới thiệu thông tin, hình ảnh và các bài viết
+                liên quan đến khu du lịch biển Ba Động, đồng thời hỗ trợ quản trị viên
+                quản lý nội dung bài viết một cách thuận tiện.
+            </p>
+            <a asp-controller="Home" asp-action="About" class="btn btn-primary">
+                Tìm hiểu thêm
+            </a>
+        </div>
+
+        <div class="col-md-6">
+            <img src="/images/badong2.jpg" class="img-fluid rounded shadow" alt="Biển Ba Động" />
+        </div>
+    </div>
+</section>
+
+<section class="container my-5">
+    <h2 class="section-title text-center">Bài viết mới nhất</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/images/badong1.jpg" : item.ImageUrl)"
+                         class="card-img-top"
+                         alt="@item.Title" />
+
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">@item.Category?.Name</span>
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Summary</p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-primary">
+                            Xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

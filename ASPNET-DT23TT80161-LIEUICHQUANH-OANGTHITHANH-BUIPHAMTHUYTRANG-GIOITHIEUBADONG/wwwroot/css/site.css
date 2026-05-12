@@ -1,31 +1,49 @@
 html {
-  font-size: 14px;
+    font-size: 14px;
 }
 
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
-}
-
-html {
-  position: relative;
-  min-height: 100%;
+    html {
+        font-size: 16px;
+    }
 }
 
 body {
-  margin-bottom: 60px;
+    margin-bottom: 0;
+    background-color: #f8f9fa;
 }
 
-.form-floating > .form-control-plaintext::placeholder, .form-floating > .form-control::placeholder {
-  color: var(--bs-secondary-color);
-  text-align: end;
+.hero-section {
+    background: linear-gradient(rgba(0, 80, 160, 0.55), rgba(0, 80, 160, 0.55)), url('/images/badong1.jpg');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 120px 0;
 }
 
-.form-floating > .form-control-plaintext:focus::placeholder, .form-floating > .form-control:focus::placeholder {
-  text-align: start;
+    .hero-section h1 {
+        font-size: 48px;
+        font-weight: bold;
+    }
+
+.section-title {
+    font-weight: bold;
+    color: #0d6efd;
+    margin-bottom: 25px;
+}
+
+.card-img-top {
+    height: 220px;
+    object-fit: cover;
+}
+
+.post-detail-img {
+    max-height: 420px;
+    object-fit: cover;
+    width: 100%;
+}
+
+.admin-box {
+    max-width: 450px;
+    margin: 60px auto;
 }

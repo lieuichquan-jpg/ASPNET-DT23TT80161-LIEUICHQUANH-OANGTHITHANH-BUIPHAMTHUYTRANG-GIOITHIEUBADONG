@@ -1,25 +1,32 @@
-using ASPNET_DT23TT80161_LIEUICHQUANH_OANGTHITHANH_BUIPHAMTHUYTRANG_GIOITHIEUBADONG.Models;
+using BaDongTourism.Data;
 using Microsoft.AspNetCore.Mvc;
-using System.Diagnostics;
+using Microsoft.EntityFrameworkCore;
 
-namespace ASPNET_DT23TT80161_LIEUICHQUANH_OANGTHITHANH_BUIPHAMTHUYTRANG_GIOITHIEUBADONG.Controllers
+namespace BaDongTourism.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly ApplicationDbContext _context;
+
+        public HomeController(ApplicationDbContext context)
         {
-            return View();
+            _context = context;
         }
 
-        public IActionResult Privacy()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var latestPosts = await _context.Posts
+                .Include(p => p.Category)
+                .OrderByDescending(p => p.CreatedAt)
+                .Take(3)
+                .ToListAsync();
+
+            return View(latestPosts);
         }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
+        public IActionResult About()
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            return View();
         }
     }
 }

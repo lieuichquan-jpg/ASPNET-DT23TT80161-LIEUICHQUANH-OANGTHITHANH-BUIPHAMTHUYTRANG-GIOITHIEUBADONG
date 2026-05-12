@@ -1,0 +1,34 @@
+﻿@model IEnumerable<BaDongTourism.Models.Post>
+
+@{
+    ViewData["Title"] = "Bài viết";
+}
+
+<section class="container my-5">
+    <h2 class="section-title text-center">Danh sách bài viết giới thiệu</h2>
+
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="@(string.IsNullOrEmpty(item.ImageUrl) ? "/images/badong1.jpg" : item.ImageUrl)"
+                         class="card-img-top"
+                         alt="@item.Title" />
+
+                    <div class="card-body">
+                        <span class="badge bg-primary mb-2">@item.Category?.Name</span>
+                        <h5 class="card-title">@item.Title</h5>
+                        <p class="card-text">@item.Summary</p>
+                    </div>
+
+                    <div class="card-footer bg-white border-0">
+                        <a asp-controller="Posts" asp-action="Details" asp-route-id="@item.Id" class="btn btn-primary">
+                            Xem chi tiết
+                        </a>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</section>

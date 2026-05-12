@@ -1,0 +1,70 @@
+﻿@model BaDongTourism.Models.Contact
+
+@{
+    ViewData["Title"] = "Liên hệ";
+}
+
+<section class="container my-5">
+    <h2 class="section-title text-center">Liên hệ</h2>
+
+    @if (TempData["Success"] != null)
+    {
+        <div class="alert alert-success">
+            @TempData["Success"]
+        </div>
+    }
+
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Thông tin liên hệ</h4>
+            <p>
+                Nếu bạn cần thêm thông tin về khu du lịch biển Ba Động,
+                vui lòng gửi thông tin liên hệ qua biểu mẫu bên cạnh.
+            </p>
+
+            <ul class="list-group">
+                <li class="list-group-item">Địa điểm: Khu du lịch biển Ba Động, Trà Vinh</li>
+                <li class="list-group-item">Email: badongtourism@example.com</li>
+                <li class="list-group-item">Điện thoại: 0123 456 789</li>
+            </ul>
+        </div>
+
+        <div class="col-md-6">
+            <form asp-action="Index" method="post" class="card p-4 shadow-sm">
+                @Html.AntiForgeryToken()
+
+                <div class="mb-3">
+                    <label asp-for="FullName" class="form-label">Họ tên</label>
+                    <input asp-for="FullName" class="form-control" />
+                    <span asp-validation-for="FullName" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input asp-for="Email" class="form-control" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Phone" class="form-label">Số điện thoại</label>
+                    <input asp-for="Phone" class="form-control" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Message" class="form-label">Nội dung</label>
+                    <textarea asp-for="Message" class="form-control" rows="5"></textarea>
+                    <span asp-validation-for="Message" class="text-danger"></span>
+                </div>
+
+                <button type="submit" class="btn btn-primary">
+                    Gửi liên hệ
+                </button>
+            </form>
+        </div>
+    </div>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
