@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>ASPNET_DT23TT80161_LIEUICHQUANH_OANGTHITHANH_BUIPHAMTHUYTRANG_GIOITHIEUBADONG</RootNamespace>
+  </PropertyGroup>
+
+</Project>
